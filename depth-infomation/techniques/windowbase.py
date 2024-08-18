@@ -26,8 +26,7 @@ def window_base_calculation(args):
     height, width = left_img.shape
     half_kernel = (args.kernel_size[0] - 1) / 2
     
-
-    costs = np.full((height, width, args.disparity_range), fill_value = 255, dtype = np.float32)
+    costs = np.full((height - half_kernel, width - half_kernel, args.disparity_range), fill_value = 255, dtype = np.float32)
 	
     if args.use_padding == True:
         center = half_kernel // 2
@@ -42,10 +41,13 @@ def window_base_calculation(args):
         
         costs = np.full((height + half_kernel, width + half_kernel, args.disparity_range), fill_value = 255, dtype = np.float32)
 
-         
+    
     for j in range(args.disparity_range):
-        left_d = left_img[0:, j:width]
-        right_d = right_img[:, 0: width - j]
+        if args.kernel_size == False:
+            
+            left_d = left_img[half_kernel: height - half_kernel, half_kernel + j: width - half_kernel]
+            right_d = right_img[half_kernel: height - half_kernel, half_kernel: width - j - half_kernel]
 
-        v = sliding_window_view
+            v = sliding_window_view(right_d)
+            
 
