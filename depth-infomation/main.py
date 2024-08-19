@@ -1,8 +1,7 @@
 import cv2 
 import numpy as np
 import os
-from distance.tools import l1_distance, l2_distance
-from techniques.pixelwise import pixel_wise_calculation
+from techniques.methods import calculation_matching
 
 
 def run():
@@ -18,8 +17,10 @@ def run():
     args.scale = 10
     args.save_result = True
     args.results_path = "./data/results"
-    pixel_wise_calculation(args)
-
+    args.method = "window-base" # pixel-wise
+    args.kernel_size = 3
+    args.use_padding = True
+    calculation_matching(args)
 
 if __name__ == "__main__":
     run() 

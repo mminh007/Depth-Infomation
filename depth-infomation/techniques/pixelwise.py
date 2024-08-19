@@ -38,8 +38,8 @@ def pixel_wise_calculation(args):
 
     if args.save_result == True:
         print("Saving result...")
-        cv2.imwrite(f"{args.results_path}/vectorization_{args.metrics}.png", depth)
-        cv2.imwrite(f"{args.results_path}/vectorization_{args.metrics}_color.png", cv2.applyColorMap(depth, cv2.COLORMAP_JET))
+        cv2.imwrite(f"{args.results_path}/{args.method}/vectorization_{args.metrics}.png", depth)
+        cv2.imwrite(f"{args.results_path}/{args.method}/vectorization_{args.metrics}_color.png", cv2.applyColorMap(depth, cv2.COLORMAP_JET))
     print("Done!")
 
     return depth
