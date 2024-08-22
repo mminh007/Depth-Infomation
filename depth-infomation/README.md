@@ -4,9 +4,12 @@ The `main.py` scripts that performs depth image computation
 
 ## Installing dependencies
 
+```
 > git clone https://github.com/mminh007/Depth-Infomation.git
 > cd depth-infomation
 > pip install -r requirements.txt
+
+```
 
 **script**
 
